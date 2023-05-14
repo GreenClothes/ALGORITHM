@@ -4,19 +4,17 @@ import sys
 input = sys.stdin.readline
 
 cal = input().strip()
+m_flag = 1
 cal_list = []
 num = 0
-num_10 = 1
-for i in range(len(cal)-1, -1, -1):
+for i in range(len(cal)):
     try:
-        num += int(cal[i])*num_10
-        num_10 *= 10
+        num = num * 10 + int(cal[i])
     except:
-        cal_list.insert(0, num)
-        num = 0; num_10 = 1
-        cal_list.insert(0, cal[i])
-    if i==0:
-        cal_list.insert(0, num)
-
-for i in range(len(cal_list)):
-    
+        if m_flag == -1: cal_list.append(-num)
+        else: cal_list.append(num)
+        if cal[i] == '-': m_flag = -1
+        num = 0
+    if i == len(cal)-1:
+        cal_list.append(m_flag * num)
+print(sum(cal_list))
