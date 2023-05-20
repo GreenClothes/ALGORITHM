@@ -14,12 +14,13 @@ def DC(x, y, n):
             if img != Q[i][j]:
                 ans.append('(')
                 DC(x, y, n // 2)
-                DC(x + n // 2, y, n // 2)
                 DC(x, y + n // 2, n // 2)
+                DC(x + n // 2, y, n // 2)
                 DC(x + n // 2, y + n // 2, n // 2)
                 ans.append(')')
                 return
     ans.append(img)
 
 DC(0, 0, N)
-print(*ans)
+ans.pop(0)
+print(*ans, sep="")
