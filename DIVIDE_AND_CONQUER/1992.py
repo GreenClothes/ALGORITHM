@@ -12,6 +12,7 @@ def DC(x, y, n):
     for i in range(x, x+n):
         for j in range(y, y+n):
             if img != Q[i][j]:
+                # 영상 압축 순서 생각해보기
                 ans.append('(')
                 DC(x, y, n // 2)
                 DC(x + n // 2, y, n // 2)
